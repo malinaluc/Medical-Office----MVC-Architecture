@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="org.example.view.MedicForm">
+  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="GridLayoutManager" row-count="3" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="926" height="808"/>
+    </constraints>
+    <properties>
+      <background color="-2383653"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <grid id="f61ca" layout-manager="GridLayoutManager" row-count="13" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-2526763"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="a8488" class="javax.swing.JLabel" binding="medicIconLabel">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="6" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <icon value="images/doctor.png"/>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="f20dc" class="javax.swing.JLabel" binding="medicVizualizareFiseMedicaleLabel">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Vizualizare fise medicale"/>
+            </properties>
+          </component>
+          <component id="2fe1b" class="javax.swing.JLabel" binding="medicActualizareFiseMedicaleLabel">
+            <constraints>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Actualizare fise medicale"/>
+            </properties>
+          </component>
+          <component id="9004a" class="javax.swing.JLabel" binding="medicFiltrarePacientiLabel">
+            <constraints>
+              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Filtrare Pacienti"/>
+            </properties>
+          </component>
+          <component id="7b9a0" class="javax.swing.JLabel" binding="medicCautarePacientLabel">
+            <constraints>
+              <grid row="2" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Cautare Pacient"/>
+            </properties>
+          </component>
+          <component id="650bf" class="javax.swing.JLabel" binding="medicProgramConsultatiiLabel">
+            <constraints>
+              <grid row="2" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Program Consultatii"/>
+            </properties>
+          </component>
+          <component id="ec85" class="javax.swing.JLabel" binding="medicUpdateIDFIsaMedicalaLabel">
+            <constraints>
+              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="ID Fisa Medicala"/>
+            </properties>
+          </component>
+          <component id="62bf6" class="javax.swing.JTextField" binding="medicUpdateIDFisaTextField">
+            <constraints>
+              <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="e8445" class="javax.swing.JLabel" binding="medicUpdateSimptomeLabel">
+            <constraints>
+              <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Simptome"/>
+            </properties>
+          </component>
+          <component id="82793" class="javax.swing.JTextField" binding="medicUpdateSimptomeTextField">
+            <constraints>
+              <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="6e7fd" class="javax.swing.JLabel" binding="medicUpdateDiagnosticLabel">
+            <constraints>
+              <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Diagnostic"/>
+            </properties>
+          </component>
+          <component id="80ec" class="javax.swing.JTextField" binding="medicUpdateDiagnosticTextField">
+            <constraints>
+              <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="23f4b" class="javax.swing.JLabel" binding="medicUpdateTratamentLabel">
+            <constraints>
+              <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Tratament"/>
+            </properties>
+          </component>
+          <component id="61c5d" class="javax.swing.JTextField" binding="medicUpdateTratamentTextField">
+            <constraints>
+              <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="b0281" class="javax.swing.JLabel" binding="medicFiltrareDiagnosticLabel">
+            <constraints>
+              <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Diagnostic"/>
+            </properties>
+          </component>
+          <component id="6f76e" class="javax.swing.JComboBox" binding="medicFiltrareDiagnosticComboBox">
+            <constraints>
+              <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-2383653"/>
+            </properties>
+          </component>
+          <component id="1e013" class="javax.swing.JTextArea" binding="medicFiltrareDiagnosticTextArea">
+            <constraints>
+              <grid row="5" column="2" row-span="2" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="50"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="145fe" class="javax.swing.JComboBox" binding="medicFiltrareTratamentComboBox">
+            <constraints>
+              <grid row="9" column="2" row-span="2" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-2383653"/>
+            </properties>
+          </component>
+          <component id="fd56c" class="javax.swing.JLabel" binding="medicFiltrareTratamentLabel">
+            <constraints>
+              <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Tratament"/>
+            </properties>
+          </component>
+          <component id="ec4d2" class="javax.swing.JLabel" binding="medicFiltrarePacientiNumePacientLabel">
+            <constraints>
+              <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Nume"/>
+            </properties>
+          </component>
+          <component id="e0c49" class="javax.swing.JButton" binding="medicCautarePacientButton">
+            <constraints>
+              <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-2383653"/>
+              <text value="Cautare"/>
+            </properties>
+          </component>
+          <component id="9b51f" class="javax.swing.JTextField" binding="medicCautarePacientNumeTextField">
+            <constraints>
+              <grid row="4" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="16811" class="javax.swing.JTextArea" binding="medicCautarePacientTextArea">
+            <constraints>
+              <grid row="5" column="3" row-span="2" col-span="2" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="50"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="20eb8" class="javax.swing.JLabel" binding="medicProgramDeLucruLabel">
+            <constraints>
+              <grid row="7" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Program de Lucru"/>
+            </properties>
+          </component>
+          <component id="8103c" class="javax.swing.JLabel" binding="medicOraInceputLabel">
+            <constraints>
+              <grid row="8" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Ora inceput"/>
+            </properties>
+          </component>
+          <component id="8f9a6" class="javax.swing.JTextField" binding="medicOraInceputTextField">
+            <constraints>
+              <grid row="9" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="24d0" class="javax.swing.JLabel" binding="medicOraFinalLabel">
+            <constraints>
+              <grid row="10" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Ora final"/>
+            </properties>
+          </component>
+          <component id="2c583" class="javax.swing.JTextField" binding="medicOraFinalTextField">
+            <constraints>
+              <grid row="11" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="62c7f" class="javax.swing.JButton" binding="medicIntroducereProgramButton">
+            <constraints>
+              <grid row="12" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-2383653"/>
+              <text value="Introducere"/>
+            </properties>
+          </component>
+          <component id="217fc" class="javax.swing.JTextArea" binding="medicVizualizareFiseMedicaleTextArea">
+            <constraints>
+              <grid row="4" column="0" row-span="8" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="50"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="43809" class="javax.swing.JButton" binding="medicVizualizareFiseMedicaleButton">
+            <constraints>
+              <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-2383653"/>
+              <text value="Vizualizare"/>
+            </properties>
+          </component>
+          <component id="6c3e5" class="javax.swing.JButton" binding="medicAcualizareFisaButton">
+            <constraints>
+              <grid row="12" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-2383653"/>
+              <text value="Acualizare"/>
+            </properties>
+          </component>
+          <component id="70c31" class="javax.swing.JTextArea" binding="medicFiltrareTratamentTextArea">
+            <constraints>
+              <grid row="11" column="2" row-span="2" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="50"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="83e30" class="javax.swing.JTextArea" binding="medicProgramConsultatiiTextArea">
+            <constraints>
+              <grid row="4" column="5" row-span="8" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="50"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="4293d" class="javax.swing.JButton" binding="medicVizualizareConsultatiiButton">
+            <constraints>
+              <grid row="12" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-2383653"/>
+              <text value="Vizualizare"/>
+            </properties>
+          </component>
+          <component id="d73ec" class="javax.swing.JLabel" binding="medicTitleLabel">
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Castellar" size="22" style="1"/>
+              <foreground color="-13893586"/>
+              <text value="MEDIC"/>
+            </properties>
+          </component>
+          <component id="7a7b0" class="javax.swing.JButton" binding="medicLogOutButton">
+            <constraints>
+              <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-2383653"/>
+              <text value="Log Out"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <vspacer id="6991a">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="4b386">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <hspacer id="2317b">
+        <constraints>
+          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <hspacer id="8179e">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+    </children>
+  </grid>
+</form>
