@@ -43,6 +43,8 @@ public class AdminForm implements Observer {
     private JLabel adminFiltrareUtilizatoriLabel;
 
     public AdminForm() {
+
+        initComboBox();
         languageSetter();
     }
 
@@ -65,6 +67,12 @@ public class AdminForm implements Observer {
         this.adminFiltrareUtilizatoriLabel.setText(LanguageManager.getString("adminFiltrareUtilizatoriLabel"));
         this.adminCreateUserPasswordLabel.setText(LanguageManager.getString("adminCreateUserPasswordLabel"));
         this.adminCreateUserUsernameLabel.setText(LanguageManager.getString("adminCreateUserUsernameLabel"));
+    }
+
+    public void initComboBox() {
+        this.adminFiltrareUtilizatoriComboBox.addItem("Admin");
+        this.adminFiltrareUtilizatoriComboBox.addItem("Asistent");
+        this.adminFiltrareUtilizatoriComboBox.addItem("Medic");
     }
 
     @Override

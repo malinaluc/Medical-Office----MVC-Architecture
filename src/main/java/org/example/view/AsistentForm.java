@@ -4,6 +4,8 @@ import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.uiDesigner.core.Spacer;
 import lombok.Getter;
+import org.example.controller.AdminController;
+import org.example.controller.AsistentController;
 import org.example.utils.LanguageManager;
 
 import javax.swing.*;
@@ -81,7 +83,12 @@ public class AsistentForm implements Observer {
     private JButton asistentGenerareXMLButton;
     private JButton asistentGenerareDOCButton;
 
+    private final AsistentController asistentController;
+
     public AsistentForm() {
+
+        asistentController = new AsistentController(this);
+
         languageSetter();
 
     }

@@ -4,10 +4,9 @@ public class SessionManager {
     private static SessionManager instance;
     private static LoggedInUser loggedInUser;
 
-    // Private constructor to prevent instantiation from outside
     private SessionManager() {}
 
-    // Static method to get the instance
+
     public static SessionManager getInstance() {
         if (instance == null) {
             instance = new SessionManager();
@@ -23,7 +22,7 @@ public class SessionManager {
         return loggedInUser;
     }
 
-    public void logOutUser() {
+    public static void logOutUser() {
         loggedInUser = null;
     }
 
