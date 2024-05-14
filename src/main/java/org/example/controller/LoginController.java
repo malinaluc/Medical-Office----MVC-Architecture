@@ -39,7 +39,7 @@ public class LoginController {
 
         if (user != null) {
 
-            SessionManager.loginUser(user.getIdUser(), user.getUsername(), user.getPassword());
+            SessionManager.getInstance().loginUser(user.getIdUser(), user.getUsername(), user.getPassword());
             if (user.getRole() == 2) showMedicForm();
             else if (user.getRole() == 1) showAdminForm();
             else showAsistentForm();

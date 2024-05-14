@@ -6,13 +6,13 @@ public class SessionManager {
 
     private SessionManager() {}
 
-
     public static SessionManager getInstance() {
         if (instance == null) {
             instance = new SessionManager();
         }
         return instance;
     }
+
 
     public static void loginUser(Integer loggedInUserID, String username, String password) {
         loggedInUser = new LoggedInUser(loggedInUserID, username, password);

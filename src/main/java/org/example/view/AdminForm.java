@@ -4,10 +4,14 @@ import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.uiDesigner.core.Spacer;
 import lombok.Getter;
+import org.example.controller.AdminController;
+import org.example.model.entity.User;
+import org.example.model.repository.UserRepository;
 import org.example.utils.LanguageManager;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 @Getter
 public class AdminForm implements Observer {
@@ -42,10 +46,17 @@ public class AdminForm implements Observer {
     private JLabel adminStergereIDUserLabel;
     private JLabel adminFiltrareUtilizatoriLabel;
 
+    private UserRepository userRepository = new UserRepository();
+
+    private AdminController adminController;
+
     public AdminForm() {
+
+        adminController = new AdminController(this);
 
         initComboBox();
         languageSetter();
+        initObservers();
     }
 
     public void languageSetter() {
@@ -75,9 +86,26 @@ public class AdminForm implements Observer {
         this.adminFiltrareUtilizatoriComboBox.addItem("Medic");
     }
 
+    private void initObservers() {
+        userRepository.readAll().forEach(user -> user.attach(this));
+    }
+
     @Override
     public void update() {
 
+        List<User> allUsers = userRepository.readAll();
+        StringBuilder sb = new StringBuilder();
+
+        for (User user : allUsers) {
+            String rol = (user.getRole() == 1) ? "administrator" : (user.getRole() == 2) ? "medic" : "asistent";
+            sb.append("ID User: " + user.getIdUser() + "\n" +
+                    "Username: " + user.getUsername() + "\n" +
+                    "Password: " + user.getPassword() + "\n" +
+                    "Rol: " + rol + "\n\n");
+        }
+
+        JTextArea textArea = this.getAdminVizualizareUsersTextArea();
+        textArea.setText(sb.toString());
     }
 
     {

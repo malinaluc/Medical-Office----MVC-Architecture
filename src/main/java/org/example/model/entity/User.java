@@ -6,12 +6,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.example.view.Observer;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Component
@@ -19,7 +19,7 @@ import javax.persistence.Id;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class User implements Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idUser;
@@ -35,6 +35,8 @@ public class User {
      */
     @NotNull
     private Integer role;
+
+
 
     public Integer getIdUser() {
         return idUser;
@@ -66,5 +68,23 @@ public class User {
 
     public void setRole(Integer role) {
         this.role = role;
+    }
+
+    @Transient
+    private List<Observer> observers = new ArrayList<>();
+
+    @Override
+    public void attach(Observer o){
+        observers.add(o);
+    }
+    @Override
+    public void detach(Observer o){
+        observers.remove(o);
+    }
+    @Override
+    public void notifyObservers(){
+        for (Observer observer : observers) {
+            observer.update();
+        }
     }
 }

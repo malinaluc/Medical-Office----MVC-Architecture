@@ -15,6 +15,7 @@ import org.example.view.MedicForm;
 import org.springframework.stereotype.Controller;
 
 import javax.swing.*;
+import java.util.HashSet;
 import java.util.List;
 
 @Controller
@@ -30,13 +31,23 @@ public class MedicController {
 
     public MedicController(MedicForm medicForm) {
         this.medicForm = medicForm;
+
+        medicForm.getMedicVizualizareFiseMedicaleButton().addActionListener(e->this.handleReadAllFisaMedicala());
+        medicForm.getMedicAcualizareFisaButton().addActionListener(e->this.handleUpdateMedicalRecord());
+        medicForm.getMedicFiltrareDiagnosticComboBox().addActionListener(e->this.handleFilterByDiagnostic());
+        medicForm.getMedicFiltrareTratamentComboBox().addActionListener(e->this.handleFilterByTreatment());
+        medicForm.getMedicCautarePacientButton().addActionListener(e->this.handleSearchForPatientByName());
+        medicForm.getMedicIntroducereProgramButton().addActionListener(e->handleSetWorkSchedule());
+        medicForm.getMedicVizualizareConsultatiiButton().addActionListener(e->handleViewAllConsultations());
+        medicForm.getMedicLogOutButton().addActionListener(e->handleLogOut());
+
     }
 
     public void handleReadAllFisaMedicala() {
 
         medicForm.getMedicVizualizareFiseMedicaleTextArea().setText("");
         LoggedInUser loggedInUser = SessionManager.getLoggedInUser();
-        List<MedicalRecord> allFisaMedicala = medicalRecordRepository.allMedicalRecordByUserId(loggedInUser.getIdUserLoggedIn());
+        List<MedicalRecord> allFisaMedicala = medicalRecordRepository.allMedicalRecordByMedicUserId(loggedInUser.getIdUserLoggedIn());
         for (MedicalRecord medicalRecord : allFisaMedicala) {
             medicForm.getMedicVizualizareFiseMedicaleTextArea().append("Numar Fisa: " + medicalRecord.getIdfisaMedicala().toString() + "\n" + "Nume pacient: " + medicalRecord.getPatientName() + "\n" + "Diagnostic: " + medicalRecord.getDiagnostic() + ", Simptome: " +
                     medicalRecord.getSymptoms() + "\n" + ", Tratament: " + medicalRecord.getTreatment() + ", Varsta Pacient: " + medicalRecord.getPatientAge().toString() + "\n" + "\n");
@@ -59,6 +70,40 @@ public class MedicController {
         MedicalRecord fisaMedicala = new MedicalRecord(idfisaMedicala, patientName, symptoms, treatment, diagnostic, patientAge, idMedic, idAsistent);
 
         medicalRecordRepository.updateFisa(fisaMedicala);
+    }
+
+    public void addItemsDiagnosticComboBox() {
+        LoggedInUser loggedInUser = SessionManager.getLoggedInUser();
+        Integer idUserLoggedIn = loggedInUser.getIdUserLoggedIn();
+        List<MedicalRecord> allFisaMedicala = medicalRecordRepository.allMedicalRecordByMedicUserId(loggedInUser.getIdUserLoggedIn());
+
+        HashSet<String> diagnostics = new HashSet<>();
+
+        for (MedicalRecord fisaMedicala : allFisaMedicala) {
+            diagnostics.add(fisaMedicala.getDiagnostic());
+        }
+        if (diagnostics != null) {
+            for (String diagnostic : diagnostics) {
+                medicForm.getMedicFiltrareDiagnosticComboBox().addItem(diagnostic);
+            }
+        }
+    }
+
+    public void addItemsTratamentComboBox() {
+        LoggedInUser loggedInUser = SessionManager.getLoggedInUser();
+        Integer idUserLoggedIn = loggedInUser.getIdUserLoggedIn();
+        List<MedicalRecord> allFisaMedicala = medicalRecordRepository.allMedicalRecordByMedicUserId(loggedInUser.getIdUserLoggedIn());
+
+        HashSet<String> trataments = new HashSet<>();
+        ;
+        for (MedicalRecord fisaMedicala : allFisaMedicala) {
+            trataments.add(fisaMedicala.getTreatment());
+        }
+        if (trataments != null) {
+            for (String tratament : trataments) {
+                medicForm.getMedicFiltrareTratamentComboBox().addItem(tratament);
+            }
+        }
     }
 
     public void handleFilterByDiagnostic() {

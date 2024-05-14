@@ -9,6 +9,7 @@ import org.example.model.repository.ConsultationRepository;
 import org.example.model.repository.MedicRepository;
 import org.example.model.repository.MedicalRecordRepository;
 import org.example.model.repository.UserRepository;
+import org.example.utils.LoggedInUser;
 import org.example.utils.SessionManager;
 import org.example.view.AsistentForm;
 import org.example.view.LoginForm;
@@ -19,6 +20,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.*;
+import java.util.HashSet;
 import java.util.List;
 
 @Controller
@@ -32,6 +34,20 @@ public class AsistentController {
 
     public AsistentController(AsistentForm asistentForm) {
         this.asistentForm = asistentForm;
+        asistentForm.getAsistentVizualizareFiseButton().addActionListener(e->this.handleViewAllMedicalRecords());
+        asistentForm.getAsistentActualizareFisaButton().addActionListener(e->handleUpdateMedicalRecord());
+        asistentForm.getAsistentCautarePacientButton().addActionListener(e->handleSearchPatientByName());
+        asistentForm.getAsistentCreareFisaButton().addActionListener(e->handleCreateMedicalRecord());
+        asistentForm.getAsistentFiltrarePacientiMedicComboBox().addActionListener(e->this.handleFilterByMedic());
+        asistentForm.getAsistentFiltrarePacientiVarstaComboBox().addActionListener(e->this.handleFilterByAge());
+        asistentForm.getAsistentFiltrarePacientDiagnosticCcomboBox().addActionListener(e->this.handleFilterByDiagnostic());
+        asistentForm.getAsistentStergereFisaButton().addActionListener(e->this.handleDeleteMedicalRecord());
+        asistentForm.getAsistentAdaugareConsultatieButton().addActionListener(e->this.handleCreateConsultation());
+        asistentForm.getAsistentGenerareXMLButton().addActionListener(e->this.handleExportXML());
+        asistentForm.getAsistentGenerareDOCButton().addActionListener(e->this.handleExportDOC());
+        asistentForm.getAsistentGenerareJSONButton().addActionListener(e->this.handleExportJSON());
+        asistentForm.getAsistentGenerareCSVButton().addActionListener(e->this.handleExpotCSV());
+        asistentForm.getAsistentLogOutButton().addActionListener(e->this.handleLogOut());
     }
 
     public void handleViewAllMedicalRecords(){
@@ -108,6 +124,60 @@ public class AsistentController {
             asistentForm.getAsistentCautarePacientTextArea().append("Pacientul cu numele furnizat nu exista");
         }
     }
+    public void addItemsDiagnosticComboBox() {
+        LoggedInUser loggedInUser = SessionManager.getLoggedInUser();
+        Integer idUserLoggedIn = loggedInUser.getIdUserLoggedIn();
+        List<MedicalRecord> allFisaMedicala = medicalRecordRepository.allMedicalRecordByUserId(loggedInUser.getIdUserLoggedIn());
+
+        HashSet<String> diagnostics = new HashSet<>();
+
+        for (MedicalRecord fisaMedicala : allFisaMedicala) {
+            diagnostics.add(fisaMedicala.getDiagnostic());
+        }
+        if (diagnostics != null) {
+            for (String diagnostic : diagnostics) {
+                asistentForm.getAsistentFiltrarePacientDiagnosticCcomboBox().addItem(diagnostic);
+            }
+        }
+    }
+
+    public void addItemsMedicComboBox() {
+        LoggedInUser loggedInUser = SessionManager.getLoggedInUser();
+        Integer idUserLoggedIn = loggedInUser.getIdUserLoggedIn();
+        List<MedicalRecord> allFisaMedicala = medicalRecordRepository.allMedicalRecordByUserId(loggedInUser.getIdUserLoggedIn());
+
+        HashSet<Medic> medics = new HashSet<>();
+
+        for (MedicalRecord fisaMedicala : allFisaMedicala) {
+            medics.add(fisaMedicala.getIdMedic());
+        }
+
+        if (medics != null) {
+            for (Medic medic : medics) {
+                //LazyInitializationException if I try to get the name of the medic
+                asistentForm.getAsistentFiltrarePacientiMedicComboBox().addItem(medic.getIdMedic());
+            }
+        }
+    }
+
+    public void addItemsVarstaComboBox() {
+        LoggedInUser loggedInUser = SessionManager.getLoggedInUser();
+        Integer idUserLoggedIn = loggedInUser.getIdUserLoggedIn();
+        List<MedicalRecord> allFisaMedicala = medicalRecordRepository.allMedicalRecordByUserId(loggedInUser.getIdUserLoggedIn());
+
+        HashSet<Integer> ages = new HashSet<>();
+
+        for (MedicalRecord fisaMedicala : allFisaMedicala) {
+            ages.add(fisaMedicala.getPatientAge());
+        }
+        if (ages != null) {
+            for (Integer age : ages) {
+                asistentForm.getAsistentFiltrarePacientiVarstaComboBox().addItem(age);
+            }
+        }
+
+    }
+
 
     public void handleFilterByDiagnostic(){
         String selectedDiagnostic = asistentForm.getAsistentFiltrarePacientDiagnosticCcomboBox().getSelectedItem().toString();
@@ -133,7 +203,7 @@ public class AsistentController {
 
         for(MedicalRecord fisaMedicala : allByVarsta){
             asistentForm.getAsistentFiltrarePacientiVarstaTextArea().append("Numar Fisa: " + fisaMedicala.getIdfisaMedicala().toString() +"\n" + "Nume pacient : " + fisaMedicala.getPatientName() +  "\n" + "Diagnostic: " + fisaMedicala.getDiagnostic() + "\n" + ", Simptome: " +
-                    fisaMedicala.getSymptoms() + "\n" + ", Tratament: " + "\n" + fisaMedicala.getTreatment() + "\n" + ", Varsta Pacient: " + fisaMedicala.getPatientAge().toString() + "\n" + "\n");
+                    fisaMedicala.getSymptoms() + "\n" + ", Tratament: "  + fisaMedicala.getTreatment() + "\n" + ", Varsta Pacient: " + fisaMedicala.getPatientAge().toString() + "\n" + "\n");
         }
     }
 
@@ -145,7 +215,7 @@ public class AsistentController {
 
         for (MedicalRecord fisaMedicala : allByMedicID) {
             asistentForm.getAsistentFiltrarePacientiMedicTextArea().append("Numar Fisa: " + fisaMedicala.getIdfisaMedicala().toString() +"\n" + "Nume pacient : " + fisaMedicala.getPatientName() +  "\n" + "Diagnostic: " + fisaMedicala.getDiagnostic() + "\n" + ", Simptome: " +
-                    fisaMedicala.getSymptoms() + "\n" + ", Tratament: " + "\n" + fisaMedicala.getTreatment() + "\n" + ", Varsta Pacient: " + fisaMedicala.getPatientAge().toString() + "\n" + "\n");
+                    fisaMedicala.getSymptoms() + "\n" + ", Tratament: "  + fisaMedicala.getTreatment() + "\n" + ", Varsta Pacient: " + fisaMedicala.getPatientAge().toString() + "\n" + "\n");
         }
     }
 

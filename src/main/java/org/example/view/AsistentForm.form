@@ -361,6 +361,7 @@
             <properties>
               <background color="-2514727"/>
               <editable value="false"/>
+              <model/>
             </properties>
           </component>
           <component id="473eb" class="javax.swing.JTextArea" binding="asistentFiltrarePacientiDiagnosticTextArea">

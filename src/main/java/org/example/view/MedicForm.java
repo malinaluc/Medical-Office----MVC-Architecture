@@ -4,6 +4,7 @@ import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.uiDesigner.core.Spacer;
 import lombok.Getter;
+import org.example.controller.MedicController;
 import org.example.utils.LanguageManager;
 
 import javax.swing.*;
@@ -52,10 +53,15 @@ public class MedicForm implements Observer {
     private JLabel medicOraInceputLabel;
     private JLabel medicOraFinalLabel;
     private JButton medicLogOutButton;
-
+    private MedicController medicController;
 
     public MedicForm() {
-languageSetter();
+
+        medicController = new MedicController(this);
+        medicController.addItemsDiagnosticComboBox();
+        medicController.addItemsTratamentComboBox();
+        languageSetter();
+
     }
 
     public void languageSetter() {

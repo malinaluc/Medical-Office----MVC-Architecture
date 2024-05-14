@@ -88,7 +88,9 @@ public class AsistentForm implements Observer {
     public AsistentForm() {
 
         asistentController = new AsistentController(this);
-
+        asistentController.addItemsDiagnosticComboBox();
+        asistentController.addItemsVarstaComboBox();
+        asistentController.addItemsMedicComboBox();
         languageSetter();
 
     }
@@ -280,6 +282,8 @@ public class AsistentForm implements Observer {
         asistentFiltrarePacientDiagnosticCcomboBox = new JComboBox();
         asistentFiltrarePacientDiagnosticCcomboBox.setBackground(new Color(-2514727));
         asistentFiltrarePacientDiagnosticCcomboBox.setEditable(false);
+        final DefaultComboBoxModel defaultComboBoxModel1 = new DefaultComboBoxModel();
+        asistentFiltrarePacientDiagnosticCcomboBox.setModel(defaultComboBoxModel1);
         panel2.add(asistentFiltrarePacientDiagnosticCcomboBox, new GridConstraints(4, 4, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         asistentFiltrarePacientiDiagnosticTextArea = new JTextArea();
         panel2.add(asistentFiltrarePacientiDiagnosticTextArea, new GridConstraints(5, 4, 2, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));

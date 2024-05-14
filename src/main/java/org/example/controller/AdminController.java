@@ -18,6 +18,13 @@ public class AdminController {
 
     public AdminController(AdminForm adminForm) {
         this.adminForm = adminForm;
+
+        adminForm.getAdminCreareUserButton().addActionListener(e->this.handleCreateUser());
+        adminForm.getAdminVizualizareUsersButton().addActionListener(e->this.handleViewAllUsers());
+        adminForm.getAdminLogOutButton().addActionListener(e->this.handleLogOut());
+        adminForm.getAdminUpdateUserButton().addActionListener(e->this.handleUpdateUser());
+        adminForm.getAdminStergereUserButton().addActionListener(e->this.handleDeleteUser());
+        adminForm.getAdminFiltrareUtilizatoriComboBox().addActionListener(e->handleFilterByUserType());
     }
 
     public void handleViewAllUsers(){
@@ -40,6 +47,8 @@ public class AdminController {
         newUser.setRole(rol);
 
         userRepository.save(newUser);
+
+        adminForm.update();
     }
 
     public void handleUpdateUser() {
@@ -51,15 +60,23 @@ public class AdminController {
 
         Integer rol = existingUser.getRole();
 
-        User newUser = new User(idUtilizator, username, password, rol);
+        User newUser = new User();
+        newUser.setIdUser(idUtilizator);
+        newUser.setUsername(username);
+        newUser.setPassword(password);
+        newUser.setRole(rol);
 
         userRepository.update(newUser);
+
+        adminForm.update();
     }
 
     public void handleDeleteUser() {
         Integer idUser = Integer.parseInt(adminForm.getAdminStergereUserTextField().getText());
         User userToDelete = userRepository.findByID(idUser);
         userRepository.delete(userToDelete);
+
+        adminForm.update();
     }
 
     public void handleFilterByUserType(){
